@@ -1,0 +1,79 @@
+Reference - https://github.com/cprakash2118/DO280-1stAug25
+CUrrent Git repo - https://github.com/cprakash2118/DO288-Jan25
+
+
+POint-01-# Product - Red Hat OpenShift 
+
+1-# Cloud services editions
+ - Red Hat OpenShift Service on AWS        [Platform=AWS;POC=Amazon - ROSA]
+ - Microsoft Azure Red Hat OpenShift       [Platform=Azure;POC=MS Azure - ARO]
+ - Red Hat OpenShift Dedicated             [Platform=AWS/GCP;POC=RedHat]
+ - Red Hat OpenShift on IBM Cloud          [Platfrom=IBMCloud;POC=IBM]
+ 
+2-# Self-managed editions
+ - Red Hat OpenShift Kubernetes Engine     [RHOKE-Basic]
+ - Red Hat OpenShift Container Platform    [RHOSP-Standard]
+ - Red Hat OpenShift Platform Plus         [RHOPP-Add-on Services]
+ - Red Hat OpenShift Virtualization Engine [RHOV-Add-On service - Virtualization based on Cloud Native "KubeVirt"]
+ 
+ 
+https://reprint.forrester.com/reports/the-forrester-wavetm-multicloud-container-platforms-q3-2025-f3367e46/index.html
+
+3-# Services & add-ons
+ - Red Hat OpenShift AI
+ - Red Hat OpenShift Lightspeed
+ - Red Hat OpenShift Virtualization
+ - Red Hat Quay
+ - Red Hat Advanced Cluster Management for Kubernetes
+ - Red Hat Advanced Cluster Security for Kubernetes
+ - Red Hat Advanced Developer Suite
+ - Red Hat OpenShift Consulting
+ https://www.redhat.com/en/resources/openshift-skill-paths-datasheet
+ 
+
+ Training modules:-
+ RHAC in OpenShift
+ https://www.redhat.com/en/services/certification/red-hat-certified-openshift-architect
+ 
+ 1- EX280/EX288 [Base Level]
+ Any 5 Example from
+ https://www.redhat.com/en/services/certification/red-hat-certified-openshift-architect#exams
+ 
+
+POint-02-#
+Classroom Environment (w.r.t DO288v418):-
+- Users Details:- 
+  Login to VMs/Servers:-
+   - student/student [sudo access]
+   - root/redhat 
+   
+  Login to OCP cluster:-
+   - admin/redhatocp [cluster-admin]
+   - developer/developer [Developer role - just member not admin]
+   - ClusterName = ocp4 
+   - BaseDomain = example.com 
+   - API URL - https://api.ocp4.example.com:6443 
+   - Web Consile - https://console-openshift-console.apps.ocp4.example.com 
+   
+   
+   API URL - https://api.clusterName.baseDomain:6443 
+   Web URL - https://appName-nsName.apps.clusterName.baseDomain
+   
+   Example:-
+   BaseDoamin- citi.com 
+   ClusterName1 - cluster-apac
+   API URL - https://api.cluster-apac.citi.com:6443 
+   Web URL - https://console-openshift-console.apps.cluster-apac.citi.com 
+   
+   ClusterName2 - cluster-emea 
+   API URL - https://api.cluster-emea.citi.com:6443 
+   Web URL - https://console-openshift-console.apps.cluster-emea.citi.com
+   
+   ClusterName3 - cluster-na 
+   https://api.cluster-na.citi.com:6443 
+   Web URL - https://console-openshift-console.apps.cluster-na.citi.com
+   
+   
+   
+  
+  
