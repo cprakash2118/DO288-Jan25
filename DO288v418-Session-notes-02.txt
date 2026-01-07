@@ -91,3 +91,21 @@ Layer-01    BareMetal/Virtulization/Cloud {Public/Private/Hybrid}
 
 OCP Cluster:-
 master - master01-03.ocp4.example.com 
+
+
+
+
+# Via Kustomization/Overlay (Manifest - yaml) -> GitHub - ArgoCD (Openshift gitops operator)
+Users:-
+user1-5/redhat  ; secretName=secret-sre-team ; IdP=IdP-htpasswd-sre-team 
+user6-10/redhat  ; secretName=secret-devops-team ; IdP=IdP-htpasswd-devops-team 
+user21-40/redhat  ; secretName=secret-myapp-team ; IdP=IdP-htpasswd-myapp-team
+
+Groups & RBAC
+user1-5  -> sre_grp     [cluster-admin access]
+user6-10 -> devops_grp  [self-proprovisoiner]
+FYI- Only cluster-admin and devops-team can create project (No other)
+user21-40 -> myyapp_grp [user21-25 - admin ; user26-35 - Edit ; user36-40 - view ] w.r.t "project-booking-app"
+user21-40 -> myyapp_grp [user21-25 - admin ; user26-35 - Edit ; user36-40 - view ] w.r.t "project-payment-app"
+
+Apply network policies setup.
