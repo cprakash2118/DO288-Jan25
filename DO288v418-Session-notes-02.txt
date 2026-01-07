@@ -1,0 +1,93 @@
+#Quick Recap (5 mins):-
+- Product - Red Hat OpenShift [Managed/Self/Add-on Service.
+- Training Module - DO288V418 (Developer track) - Base for RHCA in OpenShift.
+- Classroom Environment:-
+  1-Users details:-
+    Login to VMs/Servers.
+	- student/student [sudo access]
+    - root/redhatocp 
+	
+    Login to OCP cluster.  
+	- admin/redhatocp - cluster-admin 
+	- developer/developer - Basic Member 
+	
+	OCP cluster Login required:-
+	CLI 
+	- API URL - https://api.clusterName.baseDomain:6443 
+	- W.R.T. DO280v418 API URL  - https://api.ocp4.example.com:6443
+	
+	OCP cluster login via Web Console Access:-
+	GUI
+	- Web Console - https://console-openshift-console.apps.clusterName.baseDOmain
+	- Web Console - https://console-openshift-console.apps.ocp4.example.com 
+	
+  2- VMs/Servers details:-     
+	 - workstation.lab.example.com   lab.example.com  172.25.250.11/24 
+	   FYI- It provide the access to OCP cluster (Act as JUMP server).
+**************************
+    $ hostname -s
+     workstation
+    $ hostname -d
+     example.com 	
+    $ hostname -f
+	 workstation.lab.example.com 
+	
+	$ ssh lab@utility 
+	$ ./wait.sh {Enter}
+	Once all ok then start LAB work.
+	$ exit
+    $ oc login -u developer -p developer https://api.ocp4.example.com:6443 	
+    FYI- Login as developer.
+	$ oc login -u admin -p redhatocp https://api.ocp4.example.com:6443
+	$ oc whoami 
+	$ oc whoami -t 
+	$ oc whoami --show-console 
+	https://console-openshift-console.apps.ocp4.example.com
+	or 
+	$ oc get route -n openshift-console
+**************************
+Unit-01-#
+Red Hat OpenShift Container Platform Architecture:-
+Setting up the Developer Environment:-
+Red Hat OpenShift Concepts and Terminology:-
+
+- Red Hat OpenShift Container Platform Architecture:-
+
+Certified Kubernetes based distribution (Managed by CNCF):-
+- https://www.cncf.io/training/certification/software-conformance/
+
+product - Kubernetes [https://www.cncf.io/projects/kubernetes/]
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+- https://kubernetes.io/docs/setup/production-environment/container-runtimes/
+
+### Kubernetes Vs OpenShift:-
+
+Kubernetes:-
+Layer-06    End user application [Banking/heathcare/ etc ]
+Layer-05    Kubernetes Add-on Services [Network Solution; Logging Solution; CNI & CSI services etc]
+Layer-04    Certified Kubernetes (k8sv1.33)
+            FYI- kubelet, api-server, etcd, controller-manager, kube-scheduler 
+Layer-03    Deploy "Container Run Time" Environment - "Containerd/Crio/Docker/Mirantis Container Engine"
+            FYI- Consider "containerd/crio" as container RUN time env.
+Layer-02    Operating System (Server Based) - Enterprise Linux [RHEL/Suse etc - RHEL9]   
+Layer-01    BareMetal/Virtulization/Cloud {Public/Private/Hybrid}
+
+Master nodes/ Control Plane - kubernetes services running 
+Worker nodes/ Compute nodes - End user application (Or cluster servicves - CNI/CSI).
+
+OCPv4.18 - k8sV1.31
+OCPv4.19 - k8sV1.32
+OCPv4.20 - k8sV1.33
+
+OpenShift:-
+Layer-07    End user application  [Banking etc]
+Layer-06    Red Hat OpenShift Platform Plus - RHOPP 
+Layer-05    Red Hat OpenShift Container Platform - RHOCP (Add on basic k8s/ocp service)
+Layer-04    Red Hat OpenShift Kubernetes Engine -RHOKE [Certified Kubernetes]
+Layer-03    Deployed "Container Run Time" Environment - CRIO via OpenShift installer "openshift-install" 
+Layer-02    Operating System - RHEL coreOS (RHCOSv418) - via MCO -> MCO/MCS/MCC/MCD/MC/MCP etc 
+Layer-01    BareMetal/Virtulization/Cloud {Public/Private/Hybrid}
+
+
+OCP Cluster:-
+master - master01-03.ocp4.example.com 
