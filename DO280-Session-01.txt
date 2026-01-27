@@ -1,0 +1,113 @@
+#DO288v418:-
+Red Hat OpenShift Developer II: Building and Deploying Cloud-native Applications.
+- Building Application 
+- Deploying Application
+
+Introduction:-
+Classroom Environment - 
+1-) Users details:-
+    Login to VMs/servers.
+	- student/student [sudo access]
+	- root/redhat 
+	
+	Login to OCP cluster.
+	- admin/redhatocp [cluster-admin access]
+	- developer/developer [This account highly used for DO288v418]
+	- API URL - https://api.ocp4.example.com:6443 [https://api.clusterName.baseDomain:6443]
+	- Web Console - https://console-openshift-console.apps.ocp4.example.com 
+	- github account   [Required]
+	- quay.io account  [Required]
+
+2) Servers details:-
+    - workstation.lab.example.com   [Jump Server for developer/admin]
+	- master01.ocp4.example.com     [OCP cluster; master/worker node role]
+	- utility.lab.example.com       [DNS/DHCP/HAproxy/Apache etc]
+	
+******************** AT DO288v418 LAB work 
+$ hostname -f 
+$ ssh lab@utility 
+$ ./wait.sh 
+
+Note: This is required for DO288v418 setup.
+*******************	
+
+
+Unit-1- Red Hat OpenShift Container Platform for Developers
+- Red Hat OpenShift Container Platform Architecture.
+- Red Hat OpenShift Concepts and Terminology.
+- Setting up the Developer Environment.
+
+# Red Hat OpenShift Container Platform Architecture:-
+Point-01:- Kubernetes Vs OpenShift
+
+Kubernetes:-
+Layer-06  End user application deployed on Certifed kubernetes.
+Layer-05  Add on service w.r.t K8Sv1.3X [Networking, AUthentication, Images, etc]
+Layer-04  Certifed Kubernetes installation [k8sv1.3X] - [kubelet/kube-apiserver/etcd/kube-controller/kube-scheduler]
+Layer-03  Container RUN time [crio/containerd/Docker/Miratis Container Engine] - Select anyone.
+Layer-02  Operating System [ RHEL/SUSE/ Other Enterprise Linux OS - Server Side]
+Layer-01  Bare Metal/Virtulization/Cloud-Public/Private
+
+
+OpenShift:-
+Layer-08  End user application deployed on Certifed infra.
+Layer-07  Add on service - Red Hat OpenShift Platfrom (RHOPP)
+Layer-06  Add on service - Red Hat OpenShift Container Platform (RHOCP) - Istio/ingress/other  
+Layer-05  Add on service - Red Hat OpenShift Kubernetes Engine - Basic funtionality - [RHOKE].
+Layer-04  Certifed Kubernetes installation [k8sv1.3X] - [kubelet/kube-apiserver/etcd/kube-controller/kube-scheduler]
+Layer-03  Container RUN time [crio]
+Layer-02  Operating System [ RHEL core OS - RHCOS]
+Layer-01  Bare Metal/Virtulization/Cloud-Public/Private
+
+Master/worker nodes.
+
+
+
+
+
+
+************************************** Setting up the Developer Environment *****************************
+- You are going to build and deploy applications/Database on kubernetes platform (Red Hat OpenShift).
+- But before writing code, you need a playgroud (Cluster) and tools (CLI + IDE + Container Engine).
+  CLI - Command Line Interface 
+  IDE - Integrated Development Environment 
+  COntainer Engine - Crio/Containerd/Docker/Mirantis COntainer Engine/Podman etc.
+
+##Problem Statement:-
+- Why can't we just write code and run it on my local system/laptop?
+
+Solution Statement:-
+- Because Kubernetes application don't run like normal apps. Your code must be build into a container image, pushed to a registry and deployed to a cluster. SO you need:-
+
+ 1- A development cluster.
+ 2- CLI tools to talk to cluster (oc/kubectl can talk to OCP cluster).
+ 3- Container tools to build/push images 
+ 4- Optional IDE integration for speed.
+ 
+##Problem Statement:-
+- Choosing a Development cluster (Where you will deploy)?
+  
+  Option-A-# Red Hat Developer Sandbox (Managed cluster).
+   - Think: "Red Hat gives you a ready cluster in cloud".
+   - Pros: No local install, fast start 
+   - Cons: Internet dependent, limited resources/time.
+
+  Option-B-# OpenShift Local (CRC) - Cluster on laptop side a VM.
+   - Think:- "Your create a mini OPenShift cluster locally"
+   - Pros:-  Works offline after setup.
+   - cons:-  Need good CPU/RAM/Disk 
+   
+   Option-C# Classroom cluster (Training LAB environment).
+    - Think: "Course already provides a ready OPenShiftcluster + tools.
+	- Discussed classroom environment.
+	
+OPenShift Local (CRC) - WHat is and why needed.
+Statement:- OPenShift Local gives you a single-node OpenShift cluster, running insde a VM on your system/laptop.
+          - Mini prodction as same as openshuft.
+		
+1-DO288v418
+2-DO328 - Red Hat Service Mesh 
+3-DO378 - Micro service deployment 
+4-DO240 - 3SacleAPI management 
+5-AD482 - AMQ/Kafka 
+6-AI267 - OPenShift AI 
