@@ -1,0 +1,356 @@
+    1  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+    2  oc get users | grep admin 
+    3  oc get oauth -o yaml 
+    4  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+    5  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443  --loglevel 7
+    6  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+    7  nslookup api.ocp4.example.com
+    8  ssh root@api.ocp4.example.com
+    9  oc who
+   10  oc get sc
+   11  oc get volumesnapshotclasses.snapshot.storage.k8s.io 
+   12  oc new-project demo
+   13  oc new-app --name myapp httpd:2.4~https://github.com/cprakash2118/web
+   14  oc get pods
+   15  oc get bc
+   16  oc logs  -f bc/myapp
+   17  oc get pods
+   18  oc expose svc myapp 
+   19  oc get route 
+   20  curl myapp-demo.apps.ocp4.example.com
+   21  oc get pods
+   22  oc start-build myapp 
+   23  oc get pods
+   24  oc get bc
+   25  oc logs  -f bc/myapp
+   26  oc get pods
+   27  curl myapp-demo.apps.ocp4.example.com
+   28  oc start-build --from myapp-1
+   29  oc start-build --from-build myapp-1
+   30  oc get pods
+   31  curl myapp-demo.apps.ocp4.example.com
+   32  oc start-build --from-build myapp-1
+   33  oc logs  -f bc/myapp
+   34  curl myapp-demo.apps.ocp4.example.com
+   35  oc get pods
+   36  oc get bc
+   37  oc get is
+   38  mkdir work 
+   39  cd work/
+   40  pwd
+   41  ll
+   42  git clone https://github.com/cprakash2118/DO280-hpe
+   43  ll
+   44  cd DO280-hpe/
+   45  pwd
+   46  ll
+   47  vim pod.yaml 
+   48  oc new-project demo01
+   49  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+   50  oc new-project demo01
+   51  oc project -q
+   52  oc get pods
+   53  oc apply -f pod.yaml 
+   54  oc get pods
+   55  oc logs example-pod
+   56  oc get is -n openshift | grep httpd
+   57  oc get istag  -n openshift | grep httpd
+   58  vim pod.yaml 
+   59  oc apply -f pod.yaml 
+   60  oc get pods
+   61  oc delete pod example-pod 
+   62  vim pod.yaml 
+   63  vim replicaset.yaml 
+   64  vim -O replicaset.yaml pod.yaml 
+   65  cp -rpv replicaset.yaml deployment.yaml 
+   66  vim deployment.yaml 
+   67  vim replicaset.yaml 
+   68  vim pod.yaml 
+   69  vim replicaset.yaml 
+   70  oc delete -f pod.yaml 
+   71  oc get pods
+   72  oc apply -f replicaset.yaml 
+   73  oc get pods 
+   74  oc  get rs
+   75  oc delete -f replicaset.yaml 
+   76  oc  get rs
+   77  oc  get pod
+   78  oc apply -f replicaset.yaml 
+   79  oc get pods
+   80  oc delete pod myapp-r4l8w
+   81  oc get pods
+   82  oc get all
+   83  oc delete -f replicaset.yaml 
+   84  cp -rpv replicaset.yaml deployment.yaml 
+   85  vim deployment.yaml 
+   86  oc apply -f deployment.yaml 
+   87  oc get pods
+   88  oc get rs
+   89  oc get deployment
+   90  vim deployment.yaml 
+   91  oc delete -f deployment.yaml 
+   92  cp -rpv deployment.yaml daemonset.yaml 
+   93  vim daemonset.yaml 
+   94  oc get nodes
+   95  oc apply -f daemonset.yaml 
+   96  oc get pods
+   97  oc get pods -o wide 
+   98  oc describe nodes | grep -i taint 
+   99  vim daemonset.yaml 
+  100  oc apply -f daemonset.yaml 
+  101  oc get pods
+  102  oc get pods -o wide 
+  103  vim daemonset.yaml 
+  104  oc apply -f daemonset.yaml 
+  105  vim daemonset.yaml 
+  106  oc apply -f daemonset.yaml 
+  107  oc get pods
+  108  vim daemonset.yaml 
+  109  oc explain deployment |less
+  110  oc explain deployment.spec |less
+  111  ssh lab@utility 
+  112  lab start auth-oidc
+  113  oc whoami 
+  114  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+  115  oc adm policy add-cluster-role-to-group cluster-admin xyz-abc 
+  116  oc describe clusterrolebindings|less
+  117  oc whoami --show-console 
+  118  oc project auth-oidc
+  119  oc project -q
+  120  oc get group
+  121  oc adm policy add-role-to-group edit contractors
+  122  oc adm policy add-role-to-group view partners
+  123  ssh rhsso@sso.ocp4.example.com
+  124  oc create secret generic rhsso-oidc-client-secret --from-literal clientSecret=X4ZTPfDr0b8loqOFArfidhaHq85bHyiy -n openshift-config
+  125  oc edit aoth 
+  126  oc edit oath 
+  127  oc edit oauth 
+  128  cd DO380/labs/auth-oidc/
+  129  ll
+  130  vim sso_config.yml 
+  131  oc apply -f sso_config.yml 
+  132  oc get pods -n openshift-authentication
+  133  watch oc get pods -n openshift-authentication
+  134  oc login -u abbyquincy -p redhat_sso
+  135  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+  136  oc getgroups
+  137  oc get groups
+  138  oc login -u jayalamont -p redhat_sso
+  139  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+  140  oc get groups
+  141  ssh lab@utility 
+  142  oc new-project demo01
+  143  oc new-project demo11
+  144  oc project -q 
+  145  git clone https://github.com/cprakash2118/DO288-Jan25
+  146  cd  DO288-Jan25/
+  147  pwd
+  148  ll
+  149  cd  case-01/
+  150  pwd
+  151  ll
+  152  vim deployment-resource-app.yaml
+  153  vim deployment-resource-db.yaml 
+  154  vim pvc.yaml 
+  155  oc get sc 
+  156  oc project -q 
+  157  oc get all
+  158  oc get pvc 
+  159  ls
+  160  ll
+  161  vim pvc.yaml 
+  162  oc apply -f pvc.yaml 
+  163  oc get pvc 
+  164  vim mysecret.yaml 
+  165  echo aXRlbXM= | base64 -d 
+  166  echo aXRlbXM= | base64 -d ; echo 
+  167  oc apply -f mysecret.yaml 
+  168  oc get secret 
+  169  ls
+  170  ll
+  171  oc apply -f deployment-resource-db.yaml
+  172  oc get pods 
+  173  oc describe pod mysql-5c8c56dddd-5mq68 
+  174  oc get pods 
+  175  oc logs  mysql-5c8c56dddd-5mq68
+  176  #kubectl set env --from secret/mysql --prefix=QUOTES_ deployment famous-quotes-deployment
+  177  #kubectl set env --from secret/mysql --prefix=MYSQL_ deployment mysql
+  178  oc set env --from secret/mysql --prefix=MYSQL_ deployment mysql
+  179  oc get pods
+  180  oc rsh mysql-7f94799f84-lqjdv 
+  181  ll
+  182  vim service-resource-db.yaml
+  183  oc apply -f service-resource-db.yaml 
+  184  oc describe  svc 
+  185  oc get pods
+  186  vim deployment-resource-app.yaml 
+  187  oc apply -f deployment-resource-app.yaml 
+  188  oc get pods
+  189  wathc oc get pods
+  190  watch  oc get pods
+  191  oc get pods 
+  192  oc logs  famous-quotes-6f9f88bd45-rm4xz
+  193  oc set env --from secret/mysql --prefix=QUOTES_ deployment famous-quotes
+  194  oc get pods 
+  195  oc apply -f service-resource-app.yaml 
+  196  oc get pods
+  197  oc get svc 
+  198  oc get deployment 
+  199  oc get pvc 
+  200  oc get secret mysql 
+  201  oc expose service famous-quotes-admin --hostname cp.apps.ocp4.example.com --dry-run=client -o yaml > route-app.yaml 
+  202  vim route-app.yaml 
+  203  oc apply -f route-app.yaml 
+  204  oc get route 
+  205  oc get pods
+  206  oc rsh mysql-7f94799f84-lqjdv 
+  207  oc get pods
+  208  oc delete pod mysql-7f94799f84-lqjdv
+  209  oc get pods
+  210  oc get pvc 
+  211  oc get sc
+  212  ssh root@utility 
+  213  oc get pods
+  214  oc rsh mysql-7f94799f84-72t6c 
+  215  ll
+  216  cat * | grep image 
+  217  oc project -q 
+  218  oc get is 
+  219  oc get route -n openshift-image-registry 
+  220  oc get is -n openshift | grep nodejs
+  221  oc get is -n openshift | grep php
+  222  oc get is -n openshift | grep httpd
+  223  oc get route -n openshift-image-registry 
+  224  oc patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type merge
+  225  oc get route -n openshift-image-registry 
+  226  oc whoami 
+  227  oc whoami -t
+  228  podman  login default-route-openshift-image-registry.apps.ocp4.example.com
+  229  cat * | grep image 
+  230  podman pull quay.io/cprakash2118/famous-quotes:21.
+  231  podman pull quay.io/cprakash2118/famous-quotes:2.1
+  232  podman pull quay.io/cprakash2118/rhel8-mysql-80
+  233  podman  images
+  234  oc get route -n openshift-image-registry 
+  235  podman  tag quay.io/cprakash2118/famous-quotes:2.1 default-route-openshift-image-registry.apps.ocp4.example.com/openshift/cp-famous-quotes:2.1
+  236  podman tag quay.io/cprakash2118/rhel8-mysql-80 default-route-openshift-image-registry.apps.ocp4.example.com/openshift/cp-rhel8-mysql-80:v1.0
+  237  podman  images
+  238  oc get is -n openshift | grep cp-famous-quotes
+  239  oc get is -n openshift | grep cp-rhel8-mysql-80
+  240  podman  push default-route-openshift-image-registry.apps.ocp4.example.com/openshift/cp-rhel8-mysql-80:v1.0
+  241  podman push default-route-openshift-image-registry.apps.ocp4.example.com/openshift/cp-famous-quotes:2.1 
+  242  oc get is -n openshift | grep cp-famous-quotes
+  243  oc get is -n openshift | grep cp-rhel8-mysql-80
+  244  oc get all
+  245  oc get pvc 
+  246  oc get is -n openshift | grep cp-rhel8-mysql-80
+  247  oc get is -n openshift | grep cp-famous-quotes
+  248  oc get ppods
+  249  oc get po
+  250  oc edit deployment mysql 
+  251  oc get volumesnapshotclasses.snapshot.storage.k8s.io 
+  252  oc get sc
+  253  oc get storageclusters.ocs.openshift.io -n openshift-storage 
+  254  pwd
+  255  ll
+  256  oc delete demo11 
+  257  oc login -u admin -p redhatocp https://api.ocp4.example.com:6443 
+  258  oc delete demo11 
+  259  oc delete project demo11 
+  260  df -THP
+  261  cd /run/user/
+  262  ls
+  263  id 
+  264  cd 1000/
+  265  pws
+  266  pwd
+  267  ls
+  268  cd 
+  269  ls
+  270  oc get sc 
+  271  ssh root@utility  
+  272  ll
+  273  cd  DO288-Jan25/
+  274  pwd
+  275  ll
+  276  cd case-01/
+  277  ll
+  278  cp -rpv deployment-resource-db.yaml  deployment-resource-db-no-pvc.yaml
+  279  vim deployment-resource-db-no-pvc.yaml
+  280  oc new-project ns-do370v416
+  281  oc project -q 
+  282  oc get pods
+  283  ls
+  284  ll
+  285  oc apply -f deployment-resource-db-no-pvc.yaml
+  286  oc get pods
+  287  oc logs mysql-9f5c84f4b-ppxkb
+  288  ll
+  289  oc get secret 
+  290  oc apply -f mysecret.yaml
+  291  oc get secret 
+  292  oc get pods
+  293  #oc set env --from secret/mysql --prefix=QUOTES_ deployment famous-quotes
+  294  oc set env --from secret/mysql --prefix=MYSQL deployment mysql 
+  295  oc get pods
+  296  oc set env --from secret/mysql --prefix=MYSQL_ deployment mysql 
+  297  oc get pods
+  298  oc edit deployment mysql 
+  299  oc rsh mysql-fb9574bf6-g89gk 
+  300  oc get pods 
+  301  ll
+  302  oc apply -f service-resource-db.yaml
+  303  vim service-resource-db.yaml
+  304  oc get pods 
+  305  oc get svc 
+  306  oc get rs 
+  307  oc get deployment 
+  308  ll
+  309  oc apply -f deployment-resource-app.yaml
+  310  oc get pods 
+  311  oc logs  famous-quotes-6f9f88bd45-4s7nf
+  312  oc set env --from secret/mysql --prefix=QUOTES_ deployment famous-quotes
+  313  oc get pods 
+  314  ll
+  315  oc apply -f service-resource-app.yaml 
+  316  oc get svc 
+  317  oc edit svc famous-quotes-admin 
+  318  oc get svc 
+  319  oc describe svc 
+  320  oc get posd
+  321  oc get po
+  322  oc get svc 
+  323  oc get deployment 
+  324  oc get route 
+  325  oc expose  service famous-quotes-admin 
+  326  oc get route 
+  327  oc get pods
+  328  oc rsh mysql-fb9574bf6-g89gk 
+  329  oc get pods
+  330  oc delete  pod mysql-fb9574bf6-g89gk 
+  331  oc get pods
+  332  oc get rs
+  333  oc get pods
+  334  oc delete pod famous-quotes-6b54959548-wzc82
+  335  oc get pods
+  336  ll
+  337  oc get pvc 
+  338  oc apply -f pvc.yaml 
+  339  oc get pvc 
+  340  oc apply -f deployment-resource-db.yaml
+  341  oc get pods
+  342  oc delete pod famous-quotes-6b54959548-nw7v4
+  343  oc get pods
+  344  oc rsh mysql-7f9ccb7fbb-lszbb 
+  345  oc get pods
+  346  oc delete pod mysql-7f9ccb7fbb-lszbb
+  347  oc get pods
+  348  ll
+  349  vim deployment-resource-db.yaml
+  350  ssh root@utility   
+  351  oc get pods
+  352  oc rsh mysql-7f9ccb7fbb-8bc6r 
+  353  ll
+  354  cd ..
+  355  cd -
+  356  history > history.txt
