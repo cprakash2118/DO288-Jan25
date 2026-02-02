@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: famous-quotes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: famous-quotes
+  template:
+    metadata:
+      labels:
+        app: famous-quotes
+    spec:
+      containers:
+      - env:
+        - name: QUOTES_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: QUOTES_DATABASE
+              name: quotes
+        - name: QUOTES_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: QUOTES_ROOT_PASSWORD
+              name: quotes
+        - name: QUOTES_USER
+          valueFrom:
+            secretKeyRef:
+              key: QUOTES_USER
+              name: quotes
+        - name: QUOTES_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              key: QUOTES_hostname
+              name: quotes
+        - name: QUOTES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: QUOTES_password
+              name: quotes
+        name: famous-quotes
+        image: quay.io/cprakash2118/famous-quotes:2.1
+        ports:
+        - containerPort: 8000

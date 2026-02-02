@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- 01-secret-apps.yaml
+- 02-deployment-apps.yaml
+- 03-service-apps.yaml
+- 04-route-apps.yaml
+
